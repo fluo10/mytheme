@@ -1,0 +1,12 @@
+name = "my test theme"
+# description
+# license = 
+# homepage = ""
+min_version = ""
+demo = ""
+
+[extra]
+
+[auther]
+name = "fwtn"
+homepage = "https://blog.fireturtle.net"

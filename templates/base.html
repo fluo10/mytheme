@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang={% if lang %}{{lang}}{% elif config.default_language %}{{config.default_language}}{% else %}"en"{% endif %}>
+
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  
+  <title>{% block title %}{{config.title}}{%endblock title %}</title>
+  <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false) }}">
+</head>
+
+<body>
+<div class="site">
+  {% block header %}
+  <header class="sidebar">
+    {% if lang == config.default_language %}
+    <p class="site-title"><a href="{{ config.base_url }}">{{config.title}}</a></p>
+    {% else %}
+    <p class="site-title"><a href="{{ config.base_url ~ '/' ~ lang }}">{{config.title}}</a></p>
+    {% endif %}
+  </header>
+  {% endblock header %}
+  
+
+  <main class="content">
+  {% block content %} 
+    
+  {% endblock content%}
+  </main>
+  {% block nav %}
+  <nav class="sidebar">
+    <div id="sp-menu"class="hidden">
+      {% if config.description %}
+        <p class="description">{{ config.description }}</p>
+      {% endif %}
+      {% set categories = get_taxonomy(kind="categories", lang=lang) %}
+      {% if categories %}
+      <h3>categories:</h3> 
+      <ul class="cat-links">
+        {% for category in categories.items %}
+        <li><a href="{{ get_taxonomy_url(kind='categories', name=category.name, lang=lang) | safe }}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% set tags = get_taxonomy(kind="tags", lang=lang) %}    
+      {% if tags %}
+      <h3>tags:</h3> 
+      <ul class="tag-links">
+        {% for tag in tags.items %}
+        <li><a href="{{ get_taxonomy_url(kind='tags', name=tag.name, lang=lang) | safe }}">{{ tag.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </nav>
+  {% endblock nav %}
+  <footer class="sidebar">
+    {% if config.languages %}
+    <ul class="lang-links">
+      {% if lang != config.default_language %}
+      <li><a href="{{ config.base_url }}">{{ config.default_language }}</a></li>
+      {% endif %}
+      {% for language in config.languages %}
+      {% if lang != language.code %}
+      <li><a href="{{ config.base_url ~ '/' ~ language.code }}">{{ language.code }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </footer>
+</body>
+
+</html>
