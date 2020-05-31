@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  {{ page.title }}
+</h1>
+<p class="subtitle"><strong>{{ page.date }}</strong></p>
+<ul class="cat-links">
+  {% if page.taxonomies.categories %}
+    categories: 
+    {% for category in page.taxonomies.categories %}
+      <li><a href="{{ get_taxonomy_url(kind='categories', name=category, lang=lang) | safe }}">{{ category }}</a></li>
+    {% endfor %}
+  {% endif %}
+</ul>
+<ul class="tag-links">
+  {% if page.taxonomies.tags %}
+    tags: 
+    {% for tag in page.taxonomies.tags %}
+        <li><a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}">{{ tag }}</a></li>
+    {% endfor %}
+  {% endif %}
+</ul>
+<p>{{ page.content | safe }}</p>
+<nav>
+  <ul class="nav-links">
+    {% if page.later %}
+      <li><a href="{{ page.later.permalink }}">&lArr;</a></li>
+    {% endif %}
+     &frasl; 
+    {% if page.earlier %}
+      <li><a href="{{ page.earlier.permalink }}">&rArr;</a></li>
+    {% endif %}
+  </ul>
+</nav>
+<nav>
+  {% if page.translations %}
+    <ul class="lang-links">
+      {% for translation in page.translations %}
+        {% if translation.lang %}
+          <li><a href="{{ translation.permalink }}">{{ translation.lang }}</a></li>
+        {% else %}
+          <li><a href="{{ translation.permalink }}">{{ config.default_language }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>
+{% endblock content %}

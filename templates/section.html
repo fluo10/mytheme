@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  {{ section.title }}
+</h1>
+<ul>
+  {% for page in section.pages %}
+  <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+<nav>
+  <p>
+    {% if paginator.previous %}
+      <a href="{{ paginator.previous }}">&lArr;</a> |
+    {% endif %}
+    {% if pagenator.index %}
+      <span>{{ paginator.current_index }} &frasl; {{ paginator.number_pagers }}</span>
+    {% endif %}
+    {% if paginator.next %}
+      | <a href="{{ paginator.next }}">&rArr;</a>
+    {% endif %}
+  </p>
+</nav>
+
+{% endblock content %}
