@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  This is my blog made with Zola.
-</h1>
-<p>Click <a href="/blog/">here</a> to see my posts.</p>
+<h1 class="title">{{ section.title }}</h1>
+<p> {{ section.description }}</p>
+{% if lang == config.default_language %}
+{% set top_section_path = config.extra.ash_top_section ~ "_index.md" %}
+{% else %}
+{% set top_section_path = config.extra.ash_top_section ~ "_index." ~ lang ~ ".md" %}
+{% endif %}
+{% set top_section = get_section(path=top_section_path) %}
+<ul></ul>
+<ul>
+  {% for page in top_section.pages %}
+  <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+
 {% endblock content %}

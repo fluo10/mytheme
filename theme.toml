@@ -6,6 +6,7 @@ min_version = ""
 demo = ""
 
 [extra]
+ash_top_section = "posts/"
 
 [auther]
 name = "fwtn"
