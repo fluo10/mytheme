@@ -45,7 +45,14 @@ body{
     }
 
   }
-
+  .cat-links{
+    li{
+      a{
+        border-top: solid 1px #font-color-light;
+        border-bottom: solid 1px #font-color-light;
+      }
+    }
+  }
   .tag-links, .cat-links, .nav-links, .lang-links{
     li{
       a{
