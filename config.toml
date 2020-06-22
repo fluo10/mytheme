@@ -16,6 +16,7 @@ build_search_index = false
 
 [extra]
 # Put all your custom variables here
+ash_fonts_title = ""
 ash_fonts_main = "'Noto Serif JP', serif"
 ash_fonts_sidebar = "'Noto Sans JP', sans-serif"
 ash_fonts_webfont = "'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Noto+Serif+JP:wght@200&display=swap'"
