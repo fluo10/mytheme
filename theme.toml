@@ -7,6 +7,18 @@ demo = ""
 
 [extra]
 ash_top_section = "posts/"
+# ash_links = [
+# {url = "https://fireturtle.net", name = "test"},
+# ]
+ash_font.main = 
+ash_font.sidebar
+
+ash_categories = "categories"
+ash_tags = "tags"
+# [extra.translations.ja]
+# asj_categories = "カテゴリ"
+# ash_tags = "タグ"
+
 
 [auther]
 name = "fwtn"
