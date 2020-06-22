@@ -8,6 +8,21 @@
   
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false) }}">
+  <style>
+    {% if config.extra.ash.webfont %}
+    @import url('{{config.extra.ash.webfont}}');
+    {% endif %}
+    body { 
+        font-family: {{config.extra.ash.font_family}};
+        color: {{config.extra.ash.font_color}};
+        background-color: {{config.extra.ash.background_color}};
+    }
+    .sidebar {
+      font-family: {{config.extra.ash.sidebar.font_family}};
+      background-color: {{config.extra.ash.sidebar.background_color}};
+      color: {{config.extra.ash.sidebar.font_color}};
+    }
+  </style>
 </head>
 
 <body>
