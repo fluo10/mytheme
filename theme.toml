@@ -6,19 +6,27 @@ min_version = ""
 demo = ""
 
 [extra]
-ash_top_section = "posts/"
+[extra.ash]
+top_section = "posts/"
 # ash_links = [
 # {url = "https://fireturtle.net", name = "test"},
 # ]
-ash_font.main = 
-ash_font.sidebar
 
-ash_categories = "categories"
-ash_tags = "tags"
-# [extra.translations.ja]
+
+categories = "categories"
+tags = "tags"
+# [extra.ash.translations.ja]
 # asj_categories = "カテゴリ"
 # ash_tags = "タグ"
 
+[extra.ash.main]
+font = "serif"
+font_color = "white"
+background_color = "black"
+[extra.ash.sidebar]
+font = "sans-serif"
+font_color = "black"
+background_color = "white"
 
 [auther]
 name = "fwtn"
