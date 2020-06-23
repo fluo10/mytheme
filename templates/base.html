@@ -13,14 +13,14 @@
     @import url('{{config.extra.ash.webfont}}');
     {% endif %}
     body { 
-        font-family: {{config.extra.ash.font_family}};
-        color: {{config.extra.ash.font_color}};
-        background-color: {{config.extra.ash.background_color}};
+        --font-family: {{config.extra.ash.font_family}};
+        --color: {{config.extra.ash.font_color}};
+        --background-color: {{config.extra.ash.background_color}};
     }
     .sidebar {
-      font-family: {{config.extra.ash.sidebar.font_family}};
-      background-color: {{config.extra.ash.sidebar.background_color}};
-      color: {{config.extra.ash.sidebar.font_color}};
+      --font-family: {{config.extra.ash.sidebar.font_family}};
+      --background-color: {{config.extra.ash.sidebar.background_color}};
+      --color: {{config.extra.ash.sidebar.font_color}};
     }
   </style>
 </head>
