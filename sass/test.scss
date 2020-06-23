@@ -7,7 +7,36 @@ $font-color-light: #9cf;
 $font-color-dark: #246;
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap');*/
+
+:root {
+    --light-theme-color: hsl(var(--theme-color-hue), var(--theme-color-saturation), 90%);
+    --dark-theme-color: hsl(var(--theme-color-hue), var(--theme-color-saturation), 10%);
+    --dark-font-color: hsl(0, 0, 10%);
+    --light-font-color: hsl(0, 0, 90%);
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: var(--light-background-color);
+    --textcolor: var(--dark-font-color);
+  }
+  .sidebar {
+    --background-color: var(--dark-background-color);
+    --textcolor: var(--light-font-color);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: var(--dark-background-color);
+    --textcolor: var(--light-font-color);
+  }
+  .sidebar {
+    --background-color: var(--dark-background-color);
+    --textcolor: var(--light-font-color);
+  }
+}
 
 html {
 
@@ -15,8 +44,6 @@ html {
 
 body{
   font-family: var(--font-family);
-  color: var(--color);
-  background-color: var(--background-color);
   min-height: 100vh;
   /*font-family: 'Noto Serif JP', serif;
   color: rgba(0, 0, 0, 0.7);
@@ -38,8 +65,6 @@ body{
 
 .sidebar {
   font-family: var(--font-family);
-  color: var(--color);
-  background-color: var(--background-color);
   /*
   font-family: 'Noto Sans JP', sans-serif;
   background-color: $background-color-dark;
