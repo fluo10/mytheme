@@ -13,7 +13,8 @@
     @import url('{{config.extra.ash.webfont}}');
     {% endif %}
     :root{
-      --theme-color-hue: {{config.extra.ash.theme_hue}};
+      --theme-color-hue: {{config.extra.ash.theme_color.hue}};
+      --theme-color-saturation: {{config.extra.ash.theme_color.saturation}};
     }
     body { 
         --font-family: {{config.extra.ash.font_family}};
