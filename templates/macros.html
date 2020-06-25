@@ -1,0 +1,7 @@
+{% macro get_extra_configure_by_lang(config, key, lang) %}
+    {% if config.default_language != lang or config.extra.lang[lang][key]  %}
+      {{config.extra.lang[lang][key]}}
+    {% elseif %}
+      {{config[key]}}
+    {% endif %} 
+{% endmacro get_extra_configure_by_lang %}
