@@ -7,24 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
-  <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false) }}">
+  <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false)}}">
   <style>
-    {% if config.extra.fonts.url %}
-      @import url('{{config.extra.fonts.url}}');
+    {% if config.extra.fonts.import %}
+      @import url('{{config.extra.fonts.import | safe}}');
     {% endif %}
     :root{
       --base-hue: {{config.extra.base_color.hue}};
       --base-saturation: {{config.extra.base_color.saturation}}; 
-      --font-family: {{config.extra.fonts.main}};    }
-    .sidebar {
-      --font-family: {{config.extra.fonts.sidebar}};
-    }
-    .site-title {
-      --font-family: {{config.extra.fonts.title}}
+      --font-family: {{config.extra.fonts.main | safe}};
+      --header-font-family: {{config.extra.fonts.sidebar | safe}};
+      --title-font-family: {{config.extra.fonts.title | safe}};
     }
   </style>
 </head>
-
 <body>
 <div class="site">
   {% block header %}

@@ -7,7 +7,7 @@ demo = ""
 
 [extra]
 [extra.ash]
-top_section = "posts/"
+#top_section = "posts/"
 # ash_links = [
 # {url = "https://fireturtle.net", name = "test"},
 # ]
