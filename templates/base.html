@@ -1,3 +1,5 @@
+{% import "macros.html" as macros %}
+
 <!DOCTYPE html>
 <html lang={% if lang %}{{lang}}{% elif config.default_language %}{{config.default_language}}{% else %}"en"{% endif %}>
 
@@ -23,16 +25,18 @@
 </head>
 <body>
 <div class="site">
-  {% block header %}
+    {% block header %}
   <header class="sidebar">
     {% if lang == config.default_language %}
-    <p class="site-title"><a href="{{ config.base_url }}">{{config.title}}</a></p>
+    <h2 class="site-title"><a href="{{ config.base_url }}">{{config.title}}</a></h2>
     {% else %}
-    <p class="site-title"><a href="{{ config.base_url ~ '/' ~ lang }}">{{config.title}}</a></p>
+    <h2 class="site-title"><a href="{{ config.base_url ~ '/' ~ lang }}">{{config.title}}</a></h2>
+    {% endif %}
+    {% if config.description %}
+    <p>{{config.description}}</p>
     {% endif %}
   </header>
   {% endblock header %}
-  
 
   <main class="content">
   {% block content %} 
@@ -47,7 +51,7 @@
       {% endif %}
       {% set categories = get_taxonomy(kind="categories", lang=lang) %}
       {% if categories %}
-      <h3>categories:</h3> 
+      <h3>{{ macros::get_extra_configure_by_lang(config=config , key="categories", lang=lang) }}</h3> 
       <ul class="cat-links">
         {% for category in categories.items %}
         <li><a href="{{ get_taxonomy_url(kind='categories', name=category.name, lang=lang) | safe }}">{{ category.name }}</a></li>

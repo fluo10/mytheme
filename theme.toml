@@ -15,9 +15,6 @@ demo = ""
 
 categories = "categories"
 tags = "tags"
-# [extra.ash.translations.ja]
-# asj_categories = "カテゴリ"
-# ash_tags = "タグ"
 
 [extra.ash.main]
 font = "serif"

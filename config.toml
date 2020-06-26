@@ -27,11 +27,15 @@ languages = [
     {code = "ja", search = true},
 ]
 
+
 [extra]
 top_section = "blog/"
 
+categories = "categories"
+tags = "tags"
+
 [extra.base_color]
-hue = "360"
+hue = "180"
 saturation = "60%"
 
 [extra.fonts]
@@ -50,3 +54,5 @@ twitter = ""
 github = ""
 
 [extra.lang.ja] #Configure by language
+categories = "カテゴリ"
+ash_tags = "タグ"
