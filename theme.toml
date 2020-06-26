@@ -23,6 +23,7 @@ tags = "tags"
 font = "serif"
 font_color = "white"
 background_color = "black"
+
 [extra.ash.sidebar]
 font = "sans-serif"
 font_color = "black"

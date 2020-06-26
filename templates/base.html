@@ -9,22 +9,18 @@
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false) }}">
   <style>
-    {% if config.extra.ash.webfont %}
-    @import url('{{config.extra.ash.webfont}}');
+    {% if config.extra.fonts.url %}
+      @import url('{{config.extra.fonts.url}}');
     {% endif %}
     :root{
-      --theme-color-hue: {{config.extra.ash.theme_color.hue}};
-      --theme-color-saturation: {{config.extra.ash.theme_color.saturation}};
-    }
-    body { 
-        --font-family: {{config.extra.ash.font_family}};
-        --color: {{config.extra.ash.font_color}};
-        --background-color: {{config.extra.ash.background_color}};
-    }
+      --base-hue: {{config.extra.base_color.hue}};
+      --base-saturation: {{config.extra.base_color.saturation}}; 
+      --font-family: {{config.extra.fonts.main}};    }
     .sidebar {
-      --font-family: {{config.extra.ash.sidebar.font_family}};
-      --background-color: {{config.extra.ash.sidebar.background_color}};
-      --color: {{config.extra.ash.sidebar.font_color}};
+      --font-family: {{config.extra.fonts.sidebar}};
+    }
+    .site-title {
+      --font-family: {{config.extra.fonts.title}}
     }
   </style>
 </head>

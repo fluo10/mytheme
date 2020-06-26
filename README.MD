@@ -11,14 +11,15 @@ zola theme
 ```
 [extra]
 
-[extra.color]
+[extra.base_color]
 hue = "360"
 saturation = "80%"
 
-[extra.font]
-webfont_link = ""
-main = ""
-sidebar = ""
+[extra.fonts]
+import = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Noto+Serif+JP:wght@200&display=swap"
+
+main = "'Noto Serif JP', serif"
+sidebar = "'Noto Sans JP', sans-serif"
 title = ""
 
 [extra.links]

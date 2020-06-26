@@ -14,9 +14,39 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
+taxonomies = [
+    {name = "tags", lang = "en", pagenate_by = 10},
+    {name = "tags", lang = "ja", pagenate_by = 10},
+    {name = "categories", lang = "ja", pagenate_by = 10},
+    {name = "categories", lang = "en", pagenate_by = 10},
+]
+
+default_language = "en"
+
+languages = [
+    {code = "ja", search = true},
+]
+
 [extra]
-# Put all your custom variables here
-ash_fonts_title = ""
-ash_fonts_main = "'Noto Serif JP', serif"
-ash_fonts_sidebar = "'Noto Sans JP', sans-serif"
-ash_fonts_webfont = "'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Noto+Serif+JP:wght@200&display=swap'"
+top_section = "blog/"
+
+[extra.base_color]
+hue = "360"
+saturation = "80%"
+
+[extra.fonts]
+import = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap"
+
+main = "'Noto Serif JP', serif"
+sidebar = "'Noto Sans JP', sans-serif"
+title = "'Orbitron', sans-serif"
+
+[extra.links]
+author = ""
+about = ""
+
+[extra.social]
+twitter = ""
+github = ""
+
+[extra.lang.ja] #Configure by language
