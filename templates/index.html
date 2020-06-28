@@ -18,8 +18,7 @@
           <h3><a href="{{ get_taxonomy_url(kind='categories', name=category.name, lang=lang) | safe }}">{{ category.name }}</a></h3>
           {% for p in  category.pages %}
             {{ p }}
-          {% endfor
-          <ul></ul>
+          {% endfor %}
         </li>
         {% endfor %}
       </ul>
