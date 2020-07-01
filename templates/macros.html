@@ -7,9 +7,14 @@
 {% endmacro get_extra_configure_by_lang %}
 
 {% macro page_list(page) %}
-<h3>{{ page.title }}</h3>
+<h3><a href="{{page.permalink}}">{{ page.title }}</a></h3>
 <p>{{ page.description }}</p>
+<p>{{ page.date }}</p>
+<p>{{ page.updated }}</p>
+{% if page.taxonomies.categories %}
 
+{% endif %}
+{% endmacro page_list %}
 
 {% macro term_list_in_page(taxonomy, terms, class) %}
   <ul class="{{class}}">
