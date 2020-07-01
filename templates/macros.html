@@ -5,3 +5,24 @@
       {{config.extra[key]}}
     {% endif %} 
 {% endmacro get_extra_configure_by_lang %}
+
+{% macro page_list(page) %}
+<h3>{{ page.title }}</h3>
+<p>{{ page.description }}</p>
+
+
+{% macro term_list_in_page(taxonomy, terms, class) %}
+  <ul class="{{class}}">
+    {% for term in terms %}
+      <li><a href="{{ get_taxonomy_url(kind=taxonomy, name=term, lang=lang) | safe }}">{{ term }}</a></li>
+    {% endfor %}
+  </ul>
+{% endmacro term_list_in_page %}
+
+{% macro term_list(taxonomy, class) %}
+  <ul class="{{class}}">
+    {% for term in taxonomy.items %}
+      <li><a href="{{term.permalink}}">{{ term.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endmacro term_list %}
