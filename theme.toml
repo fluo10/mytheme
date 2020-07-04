@@ -16,12 +16,12 @@ demo = ""
 categories = "categories"
 tags = "tags"
 
-[extra.ash.main]
+[extra.main]
 font = "serif"
 font_color = "white"
 background_color = "black"
 
-[extra.ash.sidebar]
+[extra.sidebar]
 font = "sans-serif"
 font_color = "black"
 background_color = "white"

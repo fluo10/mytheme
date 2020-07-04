@@ -34,25 +34,51 @@ top_section = "blog/"
 categories = "categories"
 tags = "tags"
 
+
+
 [extra.base_color]
 hue = "180"
 saturation = "60%"
 
 [extra.fonts]
-import = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap"
+import = ["https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap",]
 
 main = "'Noto Serif JP', serif"
 sidebar = "'Noto Sans JP', sans-serif"
 title = "'Orbitron', sans-serif"
 
-[extra.links]
-author = ""
-about = ""
 
-[extra.social]
+
+[extra.ja] #Configure by language
+
+
+
+[extra.menues]
+links = [
+    {label = "Other site", link = "http://example.com"}
+]
+
+[extra.menues.author]
+index = 4
+label = "Author"
+ja.label = "書いてる人"
+name = "john doe"
+ja.name = "山田太郎"
+description = "I wanna be something."
+ja.description = "何かになりたい"
+link = "@/author.md"
 twitter = ""
 github = ""
 
-[extra.lang.ja] #Configure by language
-categories = "カテゴリ"
-ash_tags = "タグ"
+
+[extra.menues.tags]
+label = "Tags"
+ja.label = "タグ"
+index = 2
+
+[extra.menues.categories]
+label = "Categories"
+ja.label = "カテゴリ"
+index = 3
+
+
