@@ -68,7 +68,7 @@
     <ul class="lang-links">
       {% for language in config.languages | map(attribute="code") | concat(with=config.default_language) | sort %}
         {% if lang == language %}
-          <li class="selected">{{ language }}</li>
+          <li class="active">{{ language }}</li>
         {% else %}
           <li><a href="{{macros::get_top_url(lang=language)}}">{{ language }}</a></li>
         {% endif %}

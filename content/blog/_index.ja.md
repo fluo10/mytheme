@@ -1,6 +1,6 @@
 +++
 title = "List of blog posts"
 sort_by = "date"
-template = "index.html"
+template = "section.html"
 page_template = "page.html"
 +++
