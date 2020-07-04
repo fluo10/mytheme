@@ -28,23 +28,35 @@
   {% endif %}
 {% endmacro get_top_url %}
 
-{% macro page_list(page) %}
-  <h3><a href="{{page.permalink}}">{{ page.title }}</a></h3>
-  <p>{{ page.description }}</p>
-  <p>{{ page.date }}</p>
-  <p>{{ page.updated }}</p>
-  {% if page.taxonomies %}}
-    <ul class="term-links">
-      {{ self::term_list_items_in_page(page=page, taxonomy="categories", class="cat-link") }}
-      {{ self::term_list_items_in_page(page=page, taxonomy="tags", class="tag-link") }}
-    </ul>
+{% macro page_summary(page, hn, disable_link=false) %}
+  {% if disable_link %}
+    <h{{hn}}>{{ page.title }}</h{{hn}}>
+  {% else %}
+    <h{{hn}}><a href="{{page.permalink}}">{{ page.title }}</a></h{{hn}}>
   {% endif %}
-{% endmacro page_list %}
+  <div class="page_metadata">
+      <p>{{ page.description }}</p>
+      <p>{{macros::get_extra_configure_by_lang(key="translation.created", lang=page.lang) }}:<time>{{ page.date }}</time></p>
+      {% if page.updated %}
+        <p>{{macros::get_extra_configure_by_lang(key="translation.updated", lang=page.lang) }}:<time>{{ page.updated }}</time></p>
+      {% endif %}
+      {% if page.taxonomies %}
+      <ul class="term-links">
+        {{ self::term_list_items_in_page(page=page, taxonomy_name="categories", class="cat-link", disable_link=disable_link) }}
+        {{ self::term_list_items_in_page(page=page, taxonomy_name="tags", class="tag-link", disable_link=disable_link) }}
+      </ul>
+      {% endif %}
+    </div>
+{% endmacro page_summary %}
 
-{% macro term_list_items_in_page(page, taxonomy, class) %}
-  {% if page.taxonomies[taxonomy] %}
-    {% for term in page.taxonomies[taxonomy] %}
-        <li class="{{class}}"><a href="{{ get_taxonomy_url(kind=taxonomy, name=term, lang=lang) | safe }}">{{ term }}</a></li>
+{% macro term_list_items_in_page(page, taxonomy_name, class, disable_link) %}
+  {% if page.taxonomies[taxonomy_name] %}
+    {% for term in page.taxonomies[taxonomy_name] %}
+        {% if disable_link %}
+          <li class="{{class}}">{{ term }}</li>
+        {% else %}
+        <li class="{{class}}"><a href="{{ get_taxonomy_url(kind=taxonomy_name, name=term, lang=page.lang) | safe }}">{{ term }}</a></li>
+        {% endif %}
     {% endfor %}
   {% endif %}
 {% endmacro term_list_items_in_page %}

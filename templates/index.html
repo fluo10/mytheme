@@ -1,33 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
 <h1 class="title">{{ section.title }}</h1>
-<p> {{ section.description }}</p>
-{% if lang == config.default_language %}
-{% set top_section_path = config.extra.top_section ~ "_index.md" %}
-{% else %}
-{% set top_section_path = config.extra.top_section ~ "_index." ~ lang ~ ".md" %}
+{% if section.description %}
+ <p> {{ section.description }}</p>
 {% endif %}
-{% set top_section = get_section(path=top_section_path) %}
-{% set categories = get_taxonomy(kind="categories", lang=lang) %}
-      {% if categories %}
-      <h2>categories:</h3> 
-      <ul class="cat-links">
-        {% for category in categories.items %}
-        <li>
-          <h3><a href="{{ get_taxonomy_url(kind='categories', name=category.name, lang=lang) | safe }}">{{ category.name }}</a></h3>
-          {% for p in  category.pages %}
-            {{ p }}
-          {% endfor %}
-          <ul></ul>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-<ul>
-  {% for page in top_section.pages %}
-  <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
-  {% endfor %}
+<h2>{{ macros::get_extra_configure_by_lang(key="top.latest", lang=lang)}}</h2>
+{% set top_section = get_section(path=config.extra.top.main_section, lang=lang) %}
+<ul class="page-links">
+{% for page in top_section.pages %}
+  <li class="page-link"><a href="{{page.permalink}}">{{ macros::page_summary(page=page, hn=3, disable_link=true) }}</a></li>
+{% endfor %}
 </ul>
 
 {% endblock content %}

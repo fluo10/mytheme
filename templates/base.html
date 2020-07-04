@@ -44,8 +44,22 @@
   {% block nav %}
   <nav class="sidebar">
     <div id="sp-menu"class="hidden">
+
       {% if config.description %}
         <p class="description">{{ config.description }}</p>
+      {% endif %}
+      {% if config.extra.menues.author %}
+        <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>
+        <p>{{ macros::get_extra_configure_by_lang(key="menues.author.name", lang=lang) }}</p>
+        <p>{{ macros::get_extra_configure_by_lang(key="menues.author.description", lang=lang) }}</p>
+        <ul class="social-links">
+          {% if config.extra.menues.author.twitter %}
+            <li><a href="https://twitter.com/{{config.extra.menues.author.twitter}}" target="_blank">twitter</a></li>
+          {% endif %}
+          {% if config.extra.menues.author.github %}
+          <li><a href="https://github.com/{{config.extra.menues.author.github}}" target="_blank">twitter</a></li>
+          {% endif %}
+        </ul>
       {% endif %}
       {% if config.extra.menues.categories %}
       <h3>{{ macros::get_extra_configure_by_lang(key="menues.categories.label", lang=lang) }}</h3> 
@@ -68,9 +82,9 @@
     <ul class="lang-links">
       {% for language in config.languages | map(attribute="code") | concat(with=config.default_language) | sort %}
         {% if lang == language %}
-          <li class="active">{{ language }}</li>
+          <li class="lang-link active">{{ language }}</li>
         {% else %}
-          <li><a href="{{macros::get_top_url(lang=language)}}">{{ language }}</a></li>
+          <li class="lang-link"><a href="{{macros::get_top_url(lang=language)}}">{{ language }}</a></li>
         {% endif %}
       {% endfor %}
     </ul>

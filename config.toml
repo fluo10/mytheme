@@ -29,12 +29,18 @@ languages = [
 
 
 [extra]
-top_section = "blog/"
-
+[extra.top]
+main_section = "blog/_index.md"
+latest = "Latest posts"
+ja.latest = "最近の投稿"
 categories = "categories"
 tags = "tags"
 
-
+[extra.translation]
+created = "Created at"
+updated = "Updated at"
+ja.created = "作成日"
+ja.updated = "‘更新日"
 
 [extra.base_color]
 hue = "180"
@@ -67,6 +73,7 @@ ja.name = "山田太郎"
 description = "I wanna be something."
 ja.description = "何かになりたい"
 link = "@/author.md"
+
 twitter = ""
 github = ""
 
