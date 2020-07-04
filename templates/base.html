@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false)}}">
   <style>
     {% if config.extra.fonts.import %}
-      @import url('{{config.extra.fonts.import | safe}}');
+      {% for import in config.extra.fonts.import %}
+        @import url('{{import | safe}}');
+      {% endfor %}
     {% endif %}
     :root{
       --base-hue: {{config.extra.base_color.hue}};
@@ -27,11 +29,7 @@
 <div class="site">
     {% block header %}
   <header class="sidebar">
-    {% if lang == config.default_language %}
-    <h2 class="site-title"><a href="{{ config.base_url }}">{{config.title}}</a></h2>
-    {% else %}
-    <h2 class="site-title"><a href="{{ config.base_url ~ '/' ~ lang }}">{{config.title}}</a></h2>
-    {% endif %}
+    <h2 class="site-title"><a href={{macros::get_top_url(lang=lang)}}>{{config.title}}</a></h2>
     {% if config.description %}
     <p>{{config.description}}</p>
     {% endif %}
@@ -49,37 +47,31 @@
       {% if config.description %}
         <p class="description">{{ config.description }}</p>
       {% endif %}
-      {% set categories = get_taxonomy(kind="categories", lang=lang) %}
-      {% if categories %}
-      <h3>{{ macros::get_extra_configure_by_lang(config=config , key="categories", lang=lang) }}</h3> 
+      {% if config.extra.menues.categories %}
+      <h3>{{ macros::get_extra_configure_by_lang(key="menues.categories.label", lang=lang) }}</h3> 
       <ul class="cat-links">
-        {% for category in categories.items %}
-        <li><a href="{{ get_taxonomy_url(kind='categories', name=category.name, lang=lang) | safe }}">{{ category.name }}</a></li>
-        {% endfor %}
+        {{ macros::term_list_items(taxonomy_name="categories", class="cat-link")}}
       </ul>
-      {% endif %}
-      {% set tags = get_taxonomy(kind="tags", lang=lang) %}    
-      {% if tags %}
+      {% endif%}
+      {% if config.extra.menues.tags %}
       <h3>tags:</h3> 
       <ul class="tag-links">
-        {% for tag in tags.items %}
-        <li><a href="{{ get_taxonomy_url(kind='tags', name=tag.name, lang=lang) | safe }}">{{ tag.name }}</a></li>
-        {% endfor %}
+        {{ macros::term_list_items(taxonomy_name="tags", class="tag-link")}}
       </ul>
       {% endif %}
     </div>
   </nav>
   {% endblock nav %}
   <footer class="sidebar">
+    
     {% if config.languages %}
     <ul class="lang-links">
-      {% if lang != config.default_language %}
-      <li><a href="{{ config.base_url }}">{{ config.default_language }}</a></li>
-      {% endif %}
-      {% for language in config.languages %}
-      {% if lang != language.code %}
-      <li><a href="{{ config.base_url ~ '/' ~ language.code }}">{{ language.code }}</a></li>
-      {% endif %}
+      {% for language in config.languages | map(attribute="code") | concat(with=config.default_language) | sort %}
+        {% if lang == language %}
+          <li class="selected">{{ language }}</li>
+        {% else %}
+          <li><a href="{{macros::get_top_url(lang=language)}}">{{ language }}</a></li>
+        {% endif %}
       {% endfor %}
     </ul>
     {% endif %}

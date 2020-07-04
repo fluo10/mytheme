@@ -1,5 +1,5 @@
-{% macro get_extra_configure_by_lang(config, key, lang) %}
-    {% set key_array = key | split(pat=".")}
+{% macro get_extra_configure_by_lang(key, lang) %}
+    {% set key_array = key | split(pat=".") %}
     {% set start = 0 %}
     {% if key_array[start] == "config" %}{% set start = start +1 %}{% endif %}
     {% if key_array[start] == "extra" %}{% set start = start + 1 %}{% endif %}
@@ -8,11 +8,11 @@
       {% set tmp_key = key_array | slice(start=start)| join(sep=".") %}  
       {{config.extra[tmp_key]}}
     {% else %}
-      {% set end = key_array | length }
+      {% set end = key_array | length %}
       {% for i in range(start=start, end=end)  %}
         {% set first_half = key_array | slice(end=i)%}
         {% set last_half = key_array | slice(start=i)%}
-        {% set tmp_key = first_half | concat(with=lang) | concat(with=last_half) | join(sep=".")}
+        {% set tmp_key = first_half | concat(with=lang) | concat(with=last_half) | join(sep=".") %}
         {% if config.extra[tmp_key] %}
           {{config.extra[tmp_key]}}
         {% endif %}
@@ -20,24 +20,33 @@
     {% endif %} 
 {% endmacro get_extra_configure_by_lang %}
 
+{% macro get_top_url(lang) %}
+  {% if lang == config.default_language %}
+    {{get_url(path="")}}
+  {% else %}
+    {{get_url(path="") ~ '/' ~ lang}}
+  {% endif %}
+{% endmacro get_top_url %}
+
 {% macro page_list(page) %}
-<h3><a href="{{page.permalink}}">{{ page.title }}</a></h3>
-<p>{{ page.description }}</p>
-<p>{{ page.date }}</p>
-<p>{{ page.updated }}</p>
-{% if page.taxonomies %}}
-<ul class="term-links">
-{{ self::term_list_items_in_page(page=page, taxonomy="categories", class="cat-link" }}
-{{ self::term_list_items_in_page(page=page, taxonomy="tags", class="tag-link" }}
-</ul>
+  <h3><a href="{{page.permalink}}">{{ page.title }}</a></h3>
+  <p>{{ page.description }}</p>
+  <p>{{ page.date }}</p>
+  <p>{{ page.updated }}</p>
+  {% if page.taxonomies %}}
+    <ul class="term-links">
+      {{ self::term_list_items_in_page(page=page, taxonomy="categories", class="cat-link") }}
+      {{ self::term_list_items_in_page(page=page, taxonomy="tags", class="tag-link") }}
+    </ul>
+  {% endif %}
 {% endmacro page_list %}
 
 {% macro term_list_items_in_page(page, taxonomy, class) %}
-{% if page.taxonomies[taxonomy] %}
-   {% for term in page.taxonomies[taxonomy] %}
-      <li class="{{class}}"><a href="{{ get_taxonomy_url(kind=taxonomy, name=term, lang=lang) | safe }}">{{ term }}</a></li>
-   {% endfor %}
-{% endif %}
+  {% if page.taxonomies[taxonomy] %}
+    {% for term in page.taxonomies[taxonomy] %}
+        <li class="{{class}}"><a href="{{ get_taxonomy_url(kind=taxonomy, name=term, lang=lang) | safe }}">{{ term }}</a></li>
+    {% endfor %}
+  {% endif %}
 {% endmacro term_list_items_in_page %}
 
 {% macro term_list_items(taxonomy_name, class) %}
