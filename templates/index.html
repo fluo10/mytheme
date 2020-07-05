@@ -10,6 +10,6 @@
 {% for page in top_section.pages %}
   <li class="page-link"><a href="{{page.permalink}}">{{ macros::page_summary(page=page, hn=3, disable_link=true) }}</a></li>
 {% endfor %}
-</ul>
+
 
 {% endblock content %}
