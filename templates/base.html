@@ -30,9 +30,6 @@
     {% block header %}
   <header class="sidebar">
     <h2 class="site-title"><a href={{macros::get_top_url(lang=lang)}}>{{config.title}}</a></h2>
-    {% if config.description %}
-    <p>{{config.description}}</p>
-    {% endif %}
   </header>
   {% endblock header %}
 
@@ -52,12 +49,12 @@
         <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>
         <p>{{ macros::get_extra_configure_by_lang(key="menues.author.name", lang=lang) }}</p>
         <p>{{ macros::get_extra_configure_by_lang(key="menues.author.description", lang=lang) }}</p>
-        <ul class="social-links">
+        <ul class="sns-links">
           {% if config.extra.menues.author.twitter %}
-            <li><a href="https://twitter.com/{{config.extra.menues.author.twitter}}" target="_blank">twitter</a></li>
+            <li class="sns-link"><a href="https://twitter.com/{{config.extra.menues.author.twitter}}" target="_blank">twitter</a></li>
           {% endif %}
           {% if config.extra.menues.author.github %}
-          <li><a href="https://github.com/{{config.extra.menues.author.github}}" target="_blank">twitter</a></li>
+          <li class="sns-link"><a href="https://github.com/{{config.extra.menues.author.github}}" target="_blank">github</a></li>
           {% endif %}
         </ul>
       {% endif %}
