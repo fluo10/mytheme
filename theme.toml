@@ -1,4 +1,4 @@
-name = "my test theme"
+name = "ash"
 # description
 # license = 
 # homepage = ""
@@ -6,7 +6,25 @@ min_version = ""
 demo = ""
 
 [extra]
-ash_top_section = "posts/"
+[extra.ash]
+#top_section = "posts/"
+# ash_links = [
+# {url = "https://fireturtle.net", name = "test"},
+# ]
+
+
+categories = "categories"
+tags = "tags"
+
+[extra.main]
+font = "serif"
+font_color = "white"
+background_color = "black"
+
+[extra.sidebar]
+font = "sans-serif"
+font_color = "black"
+background_color = "white"
 
 [auther]
 name = "fwtn"

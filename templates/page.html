@@ -1,27 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  {{ page.title }}
-</h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
-<ul class="cat-links">
-  {% if page.taxonomies.categories %}
-    categories: 
-    {% for category in page.taxonomies.categories %}
-      <li><a href="{{ get_taxonomy_url(kind='categories', name=category, lang=lang) | safe }}">{{ category }}</a></li>
-    {% endfor %}
-  {% endif %}
-</ul>
-<ul class="tag-links">
-  {% if page.taxonomies.tags %}
-    tags: 
-    {% for tag in page.taxonomies.tags %}
-        <li><a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}">{{ tag }}</a></li>
-    {% endfor %}
-  {% endif %}
-</ul>
-<p>{{ page.content | safe }}</p>
+<article>
+  {{ macros::page_summary(page=page, hn=1)}}
+  <p>{{ page.content | safe }}</p>
+</article>
 <nav>
   <ul class="nav-links">
     {% if page.later %}

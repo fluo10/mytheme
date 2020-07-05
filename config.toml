@@ -4,8 +4,8 @@ base_url = "https://example.com"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-title = "Test theme"
-
+title = "Ash"
+discription = "Multilanguage theme"
 
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
@@ -14,5 +14,78 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
+taxonomies = [
+    {name = "tags", lang = "en", pagenate_by = 10},
+    {name = "tags", lang = "ja", pagenate_by = 10},
+    {name = "categories", lang = "ja", pagenate_by = 10},
+    {name = "categories", lang = "en", pagenate_by = 10},
+]
+
+default_language = "en"
+
+languages = [
+    {code = "ja", search = true},
+]
+
+
 [extra]
-# Put all your custom variables here
+[extra.top]
+main_section = "blog/_index.md"
+latest = "Latest posts"
+ja.latest = "最近の投稿"
+categories = "categories"
+tags = "tags"
+
+[extra.translation]
+created = "Created at"
+updated = "Updated at"
+ja.created = "作成日"
+ja.updated = "‘更新日"
+
+[extra.base_color]
+hue = "180"
+saturation = "60%"
+
+[extra.fonts]
+import = ["https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap",]
+
+main = "'Noto Serif JP', serif"
+sidebar = "'Noto Sans JP', sans-serif"
+title = "'Orbitron', sans-serif"
+
+
+
+[extra.ja] #Configure by language
+
+
+
+[extra.menues]
+links = [
+    {label = "Other site", link = "http://example.com"}
+]
+
+[extra.menues.author]
+index = 4
+label = "Author"
+ja.label = "書いてる人"
+name = "john doe"
+ja.name = "山田太郎"
+description = "I wanna be something."
+ja.description = "何かになりたい"
+link = "@/author.md"
+
+twitter = ""
+github = ""
+
+
+[extra.menues.tags]
+label = "Tags"
+ja.label = "タグ"
+index = 2
+
+[extra.menues.categories]
+label = "Categories"
+ja.label = "カテゴリ"
+index = 3
+
+

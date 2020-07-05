@@ -1,0 +1,66 @@
+{% macro get_extra_configure_by_lang(key, lang) %}
+    {% set key_array = key | split(pat=".") %}
+    {% set start = 0 %}
+    {% if key_array[start] == "config" %}{% set start = start +1 %}{% endif %}
+    {% if key_array[start] == "extra" %}{% set start = start + 1 %}{% endif %}
+    {% set matched_key = key_array | slice(start=start)| join(sep=".") %}  
+    {% set end = key_array | length %}
+    {% for i in range(start=start, end=end)  %}
+      {% set first_half = key_array | slice(end=i)%}
+      {% set last_half = key_array | slice(start=i)%}
+      {% set tmp_key = first_half | concat(with=lang) | concat(with=last_half) | join(sep=".") %}
+      {% if config.extra[tmp_key] %}
+        {% set matched_key = tmp_key %}
+      {% endif %}
+    {% endfor %}
+    {{config.extra[matched_key]}} 
+{% endmacro get_extra_configure_by_lang %}
+
+{% macro get_top_url(lang) %}
+  {% if lang == config.default_language %}
+    {{get_url(path="")}}
+  {% else %}
+    {{get_url(path="") ~ '/' ~ lang}}
+  {% endif %}
+{% endmacro get_top_url %}
+
+{% macro page_summary(page, hn, disable_link=false) %}
+  {% if disable_link %}
+    <h{{hn}}>{{ page.title }}</h{{hn}}>
+  {% else %}
+    <h{{hn}}><a href="{{page.permalink}}">{{ page.title }}</a></h{{hn}}>
+  {% endif %}
+  <div class="page_metadata">
+      <p>{{ page.description }}</p>
+      <p>{{macros::get_extra_configure_by_lang(key="translation.created", lang=page.lang) }}:<time>{{ page.date }}</time></p>
+      {% if page.updated %}
+        <p>{{macros::get_extra_configure_by_lang(key="translation.updated", lang=page.lang) }}:<time>{{ page.updated }}</time></p>
+      {% endif %}
+      {% if page.taxonomies %}
+      <ul class="term-links">
+        {{ self::term_list_items_in_page(page=page, taxonomy_name="categories", class="cat-link", disable_link=disable_link) }}
+        {{ self::term_list_items_in_page(page=page, taxonomy_name="tags", class="tag-link", disable_link=disable_link) }}
+      </ul>
+      {% endif %}
+    </div>
+{% endmacro page_summary %}
+
+{% macro term_list_items_in_page(page, taxonomy_name, class, disable_link) %}
+  {% if page.taxonomies[taxonomy_name] %}
+    {% for term in page.taxonomies[taxonomy_name] %}
+        {% if disable_link %}
+          <li class="{{class}}">{{ term }}</li>
+        {% else %}
+        <li class="{{class}}"><a href="{{ get_taxonomy_url(kind=taxonomy_name, name=term, lang=page.lang) | safe }}">{{ term }}</a></li>
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endmacro term_list_items_in_page %}
+
+{% macro term_list_items(taxonomy_name, class) %}
+  {% set taxonomy = get_taxonomy(kind=taxonomy_name, lang=lang) %}
+  {% for term in taxonomy.items %}
+    <li class="{{class}}"><a href="{{term.permalink}}">{{ term.name }}<span class="count">&#040;{{term.pages | length}}&#041;</span></a></li>
+  {% endfor %}
+{% endmacro term_list_items %}
+
