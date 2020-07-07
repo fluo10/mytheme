@@ -23,23 +23,23 @@ $font-color-dark: #246;
 
 
   :root {
-    --background-color: hsl(var(--base-hue), var(--base-saturation), 20%);
-    --font-color: hsl(0, 0%, 80%);
-    --hover-color: hsl(0, 0%, 60%);
+    --pale-saturation: calc(var(--base-saturation) / 2);
+    --background-color: hsl(var(--base-hue), var(--pale-saturation), 80%);
+    --color: hsl(var(--base-hue), var(--pale-saturation), 20%);
+    --hover-color: hsl(var(--base-hue), var(--pale-saturation), 40%);
     --header-background-color: hsl(var(--base-hue), var(--base-saturation), 10%);
-    --header-font-color: hsl(0, 0%, 90%);
-    --header-hover-color: hsl(0, 0%, 70%);
+    --header-color: hsl(var(--base-hue), var(--base-saturation), 90%);
+    --header-hover-color: hsl(var(--base-hue), var(--base-saturation), 70%);
   }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-color: hsl(var(--base-hue), var(--base-saturation), 90%);
-    --color: hsl(0, 0%, 10%);    
-    --hover-color: hsl(0, 0%, 20%);
+    --background-color: hsl(var(--base-hue), var(--pale-saturation), 20%);
+    --color: hsl(var(--base-hue), var(--pale-saturation), 80%);    
+    --hover-color: hsl(var(--base-hue), var(--pale-saturation), 20%);
     --header-background-color: hsl(var(--base-hue), var(--base-saturation), 20%);
-    --header-font-color: hsl(0, 0%, 80%);
-    --header-hover-color: hsl(0, 0%, 60%);
-
+    --header-color: hsl(var(--base-hue), var(--base-saturation), 80%);
+    --header-hover-color: hsl(var(--base-hue), var(--base-saturation), 60%);
   }
 }
 
@@ -80,8 +80,14 @@ main{
   color: rgba(255, 255, 255, 0.7);
   */
   font-family: var(--header-font-family);
-  color: var(--header-font-color);
+  color: var(--header-color);
   background-color: var(--header-background-color);
+  a{
+      color: var(--header-color);
+  }
+  a:hover, a:focus {
+    color: var(--header-hover-color);
+  }
   p {
     margin: 0.5em 0;
   }
