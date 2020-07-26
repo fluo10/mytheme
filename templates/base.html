@@ -21,9 +21,9 @@
     :root{
       --base-hue: {{config.extra.base_color.hue}};
       --base-saturation: {{config.extra.base_color.saturation}}; 
-      --font-family: {{macros::get_extra_configure_by_lang(key="fonts.main", lang=lang) | safe}};
-      --header-font-family: {{macros::get_extra_configure_by_lang(key="fonts.sidebar", lang=lang) | safe}};
-      --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | safe}};
+      --font-family: {{macros::get_extra_configure_by_lang(key="fonts.main", lang=lang) | trim}};
+      --header-font-family: {{macros::get_extra_configure_by_lang(key="fonts.sidebar", lang=lang) | trim}};
+      --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | trim}};
     }
   </style>
 </head>

@@ -16,7 +16,7 @@
     {% if only_key %}
       {{"extra." ~ matched_key}}
     {% else %}
-      {{config.extra[matched_key]}}
+      {{config.extra[matched_key] | safe}}
     {% endif %}
 {% endmacro get_extra_configure_by_lang %}
 
