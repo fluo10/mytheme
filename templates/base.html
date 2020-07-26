@@ -67,7 +67,7 @@
       </ul>
       {% endif%}
       {% if config.extra.menues.tags %}
-      <h3>tags:</h3> 
+      <h3>{{ macros::get_extra_configure_by_lang(key="menues.tags.label", lang=lang) }}</h3> 
       <ul class="tag-links">
         {{ macros::term_list_items(taxonomy_name="tags", class="tag-link")}}
       </ul>
