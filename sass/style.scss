@@ -29,7 +29,7 @@ $font-color-dark: #246;
     --hover-color: hsl(var(--base-hue), var(--pale-saturation), 40%);
     --header-background-color: hsl(var(--base-hue), var(--base-saturation), 20%);
     --header-color: hsl(var(--base-hue), var(--pale-saturation), 80%);
-    --header-hover-color: hsl(var(--base-hue), var(--base-saturation), 60%);
+    --header-hover-color: hsl(var(--base-hue), var(--pale-saturation), 60%);
   }
 
 @media (prefers-color-scheme: dark) {

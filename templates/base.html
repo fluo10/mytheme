@@ -11,19 +11,19 @@
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false)}}">
   <style>
-    {% set config_import = macros::get_extra_configure_by_lang(key="fonts.import", lang=lang, only_key=true)| trim %}
+    {% set config_import = macros::get_extra_configure_by_lang(key="fonts.import", lang=lang, only_key=true)|trim %}
     {% set imports = config[config_import] %}
     {% if imports %}
       {% for import in imports %}
-        @import url('{{import | safe}}');
+        @import url('{{import | trim | safe}}');
       {% endfor %}
     {% endif %}
     :root{
       --base-hue: {{config.extra.base_color.hue}};
       --base-saturation: {{config.extra.base_color.saturation}}; 
-      --font-family: {{macros::get_extra_configure_by_lang(key="fonts.main", lang=lang) | trim}};
-      --header-font-family: {{macros::get_extra_configure_by_lang(key="fonts.sidebar", lang=lang) | trim}};
-      --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | trim}};
+      --font-family: {{macros::get_extra_configure_by_lang(key="fonts.main", lang=lang) | trim | safe}};
+      --header-font-family: {{macros::get_extra_configure_by_lang(key="fonts.sidebar", lang=lang) | trim | safe}};
+      --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | trim | safe}};
     }
   </style>
 </head>

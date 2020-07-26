@@ -32,9 +32,11 @@ languages = [
 [extra.top]
 main_section = "blog/_index.md"
 latest = "Latest posts"
-ja.latest = "最近の投稿"
 categories = "categories"
 tags = "tags"
+[extra.top.ja]
+main_section = "blog/_index.ja.md"
+latest = "最近の投稿"
 
 [extra.translation]
 created = "Created at"
