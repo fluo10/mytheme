@@ -11,7 +11,8 @@
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='test.css', trailing_slash=false)}}">
   <style>
-    {% set imports = macros::get_extra_configure_by_lang(key="fonts.import", lang=lang) %}
+    {% set config_import = macros::get_extra_configure_by_lang(key="fonts.import", lang=lang, only_key=true)| trim %}
+    {% set imports = config[config_import] %}
     {% if imports %}
       {% for import in imports %}
         @import url('{{import | safe}}');
