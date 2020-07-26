@@ -45,7 +45,11 @@
     <div id="sp-menu"class="hidden">
 
       {% if config.description %}
-        <p class="description">{{ config.description }}</p>
+        {% if config.translations[lang].description %}
+          <p class="description">{{ config.translations[lang].description | safe }}</p>
+        {% else %}
+          <p class="description">{{ config.description | safe }}</p>
+        {% endif %}
       {% endif %}
       {% if config.extra.menues.author %}
         <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>
