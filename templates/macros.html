@@ -1,19 +1,24 @@
-{% macro get_extra_configure_by_lang(key, lang) %}
+{% macro get_extra_configure_by_lang(key, lang, only_key=false) %}
     {% set key_array = key | split(pat=".") %}
     {% set start = 0 %}
-    {% if key_array[start] == "config" %}{% set start = start +1 %}{% endif %}
+    {% if key_array[start] == "config" %}{% set start = start + 1 %}{% endif %}
     {% if key_array[start] == "extra" %}{% set start = start + 1 %}{% endif %}
-    {% set matched_key = key_array | slice(start=start)| join(sep=".") %}  
+    {% set key_array = key_array | slice(start=start) %}
+    {% set_global matched_key = key_array | join(sep=".") %}  
     {% set end = key_array | length %}
-    {% for i in range(start=start, end=end)  %}
-      {% set first_half = key_array | slice(end=i)%}
-      {% set last_half = key_array | slice(start=i)%}
+    {% for i in range(start=0, end=end)  %}
+      {% set first_half = key_array | slice(end=i) %}
+      {% set last_half = key_array | slice(start=i) %}
       {% set tmp_key = first_half | concat(with=lang) | concat(with=last_half) | join(sep=".") %}
       {% if config.extra[tmp_key] %}
-        {% set matched_key = tmp_key %}
+        {% set_global matched_key = tmp_key %}
       {% endif %}
     {% endfor %}
-    {{config.extra[matched_key]}} 
+    {% if only_key %}
+      {{"extra." ~ matched_key | as_str}}
+    {% else %}
+      {{config.extra[matched_key] | safe}}
+    {% endif %}
 {% endmacro get_extra_configure_by_lang %}
 
 {% macro get_top_url(lang) %}
