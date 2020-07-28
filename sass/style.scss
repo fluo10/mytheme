@@ -71,6 +71,10 @@ main{
   }
 }
 
+pre{
+    overflow: auto;
+}
+
 .active{
   text-decoration: underline;
   color: var(--header-hover-color)
