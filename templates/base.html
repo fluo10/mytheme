@@ -10,14 +10,7 @@
   
   <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false)}}">
-  <style>
-    {% set config_import = macros::get_extra_configure_by_lang(key="fonts.import", lang=lang, only_key=true)|trim %}
-    {% set imports = config[config_import] %}
-    {% if imports %}
-      {% for import in imports %}
-        @import url('{{import | trim | safe}}');
-      {% endfor %}
-    {% endif %}
+  <style>  
     :root{
       --base-hue: {{config.extra.base_color.hue}};
       --base-saturation: {{config.extra.base_color.saturation}}; 
@@ -26,6 +19,13 @@
       --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | trim | safe}};
     }
   </style>
+  {% set additional_head_key = macros::get_extra_configure_by_lang(key="additional_head", lang=lang, only_key=true)|trim %}
+  {% set additional_heads = config[additional_head_key] %}
+  {% if additional_heads %}
+    {% for additional_head in additional_heads %}
+        {{additional_head | safe}}
+    {% endfor %}
+  {% endif %}
 </head>
 <body>
 <div class="site">
