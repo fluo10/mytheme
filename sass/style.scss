@@ -1,16 +1,11 @@
-$breakpoint: 48em;
-$sidebarWidthMin: 150px;
-$sidebarWidthMax: 250px;
-$mainWidthMin: 400px;
-$mainWidthMax: 700px;
+
 
 @import "base/normalize";
-//@import "color";
-    
+
 @import "layout";
 
 
-@import "module/sidebar";
+@import "theme";
 
 
 /*
