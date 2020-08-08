@@ -29,6 +29,10 @@ languages = [
 
 
 [extra]
+additional_head = [
+"<style>@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Orbitron:wght@900&display=swap');</style>",
+]
+
 [extra.top]
 main_section = "blog/_index.md"
 latest = "Latest posts"
@@ -49,11 +53,10 @@ hue = "180"
 saturation = "60%"
 
 [extra.fonts]
-import = ["https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&family=Orbitron:wght@900&display=swap",]
-
 main = "'Noto Serif', serif"
 sidebar = "'Noto Sans', sans-serif"
 title = "'Orbitron', sans-serif"
+
 [extra.fonts.ja]
 import = ["https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&family=Orbitron:wght@900&display=swap",]
 main = "'Noto Serif JP', serif"
