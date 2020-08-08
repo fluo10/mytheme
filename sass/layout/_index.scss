@@ -1,0 +1,6 @@
+@media (min-width: $breakpoint) {
+    @import "pc";
+}
+@media (max-width: $breakpoint) {
+    @import "sp";
+}

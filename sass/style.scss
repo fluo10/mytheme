@@ -4,18 +4,14 @@ $sidebarWidthMax: 250px;
 $mainWidthMin: 400px;
 $mainWidthMax: 700px;
 
-$import "color";
+@import "base/normalize";
+//@import "color";
     
-@media (min-width: $breakpoint) {
-    @import "pc";
-}
-@media (max-width: $breakpoint) {
-    @import "sp";
-}
+@import "layout";
 
-.sidebar{
-    @import "sidebar";
-}
+
+@import "module/sidebar";
+
 
 /*
 $background-color-light:#9cf; 
