@@ -23,7 +23,7 @@
   {% set additional_heads = config[additional_head_key] %}
   {% if additional_heads %}
     {% for additional_head in additional_heads %}
-        {{additional_head}}
+        {{additional_head | safe}}
     {% endfor %}
   {% endif %}
 </head>
