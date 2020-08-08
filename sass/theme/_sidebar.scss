@@ -1,0 +1,43 @@
+.sidebar { 
+  padding: 0.5em;
+  /*
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: $background-color-dark;
+  color: rgba(255, 255, 255, 0.7);
+  */
+  font-family: var(--header-font-family);
+  color: var(--header-color);
+  background-color: var(--header-background-color);
+  a{
+      color: var(--header-color);
+  }
+  a:hover, a:focus {
+    color: var(--header-hover-color);
+  }
+  p {
+    margin: 0.5em 0;
+  }
+  .site-title{
+    font-family: var(--title-font-family);
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0;
+    a, a:hover, a:focus{
+      color: inherit;
+      text-decoration: inherit;
+    }
+  }
+  .cat-links{
+    .count{
+      display: none;
+    }
+    li{
+      display: block;
+    }
+  }
+}
+nav.sidebar {
+  margin: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

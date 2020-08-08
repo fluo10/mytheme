@@ -1,0 +1,16 @@
+
+$breakpoint: 48em;
+$sidebarWidthMin: 150px;
+$sidebarWidthMax: 250px;
+$mainWidthMin: 400px;
+$mainWidthMax: 700px;
+
+@media (min-width: $breakpoint) {
+    @import "pc";
+}
+@media (max-width: $breakpoint) {
+    @import "sp";
+}
+:root{
+    min-height: 100vh;
+}
