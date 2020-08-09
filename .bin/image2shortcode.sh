@@ -7,8 +7,8 @@ function replace () {
     fi
     local FILE
     for FILE in $DIR;do
-        if [ -f $FILE ]; then
-            sed -r -e 's/\!\[(.*)\]\((.*)\)/{{ image(src="\2", alt="\1") }}'
+        if [ ${FILE: -3} == ".md" ]; then
+            sed -i -r -e 's/!\[(.*)\]\((.*)\)/{{ image(src="\2", alt="\1") }}/' $FILE
         elif [ -d $FILE ]; then
             replace $FILE
         fi
