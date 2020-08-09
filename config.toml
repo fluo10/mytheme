@@ -96,4 +96,6 @@ label = "Categories"
 ja.label = "カテゴリ"
 index = 3
 
-
+[extra.footer]
+links = [{name = "Japanese", url = "@/_index.ja.md"}]
+ja.links = [{name = "英語" , url = "@/_index.md"}]
