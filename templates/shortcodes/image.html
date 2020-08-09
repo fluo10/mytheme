@@ -13,9 +13,9 @@
       {% endif %}
     {% endfor %}
   {% endif %}
-  <a href="{{ get_url(path=path) }}">
-      <img alt="{{ alt }}" src='{{ resize_image(path=path, width=800, height=800, op="fit") }}' />
-  </a>
+  {# <a href="{{ get_url(path=path) }}"> #}
+  <img alt="{{ alt }}" src='{{ resize_image(path=path, width=800, height=800, op="fit") }}' />
+  {#</a>#}
 </div>
       
     

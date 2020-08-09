@@ -20,8 +20,8 @@
     }
   </style>
   {% set additional_head_key = macros::get_extra_configure_by_lang(key="additional_head", lang=lang, only_key=true)|trim %}
-  {% set additional_heads = config[additional_head_key] %}
-  {% if additional_heads %}
+  {% if config[additional_head_key] %}
+    {% set additional_heads = config[additional_head_key] %}
     {% for additional_head in additional_heads %}
         {{additional_head | safe}}
     {% endfor %}
