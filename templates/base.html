@@ -81,17 +81,14 @@
   {% endblock nav %}
   <footer class="sidebar">
     
-    {% if config.languages %}
-    <ul class="lang-links">
-      {% for language in config.languages | map(attribute="code") | concat(with=config.default_language) | sort %}
-        {% if lang == language %}
-          <li class="lang-link active">{{ language }}</li>
-        {% else %}
-          <li class="lang-link"><a href="{{macros::get_top_url(lang=language)}}">{{ language }}</a></li>
-        {% endif %}
+  {% if config.extra.footer.links %}
+    <ul class="footer-links">
+      {% set footer_link_key =  macros::get_extra_configure_by_lang(key="footer.links", lang=lang, only_key=true)|trim %}
+      {% for footer_link in config[footer_link_key] %}
+        <li class="footer-link"><a href="{% if footer_link.url is starting_with('@') %}{{ get_url(path=footer_link.url) }}{% else %}{{ footer_link.url }}{% endif %}">{{ footer_link.name }}</a></li>
       {% endfor %}
     </ul>
-    {% endif %}
+  {% endif %}
   </footer>
 </body>
 
