@@ -1,9 +1,11 @@
-<a href="{{ get_url(path=path) }}">
-  <picture>
-    <source media="(max-width: 799px)" srcset="{{ resize_image(path=path, width=400, height=300, op="fit") }}">
-    <source media="(min-width: 800px)" srcset="{{ resize_image(path=path, width=800, height=600, op="fit") }}">
-    <img src="{{ resize_image(path=path, width=800, height=600, op="fit") }}" />
-  </picture>
-</a>
-    
+<div>
+  <a href="{{ get_url(path=path) }}">
+    <!--<picture>
+      <source media="(max-width: 800px)" srcset="{{ resize_image(path=path, width=400, height=300, op="fit") }}">
+      -->
+      <img src='{{ resize_image(path=path, width=800, height=800, op="fit") }}' />
+    <!--</picture>-->
+  </a>
+</div>
+      
     
