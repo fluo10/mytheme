@@ -1,10 +1,20 @@
 <div>
+  {% if body %}
+    {% set args = body | trim_start_matches(pat="![") | trim_end_matched(pat="]") | split(pat="](") %}
+    {% set alt = args[0] %}
+    {% set src = args[1] %}
+  {% endif %}
+  {% if src is containing("/") %}
+    {% set path = src %}
+  {% else %} 
+    {% for asset in page.assets %}
+      {% if asset is ending_with(src) %}
+      {% set_global path = asset %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
   <a href="{{ get_url(path=path) }}">
-    <!--<picture>
-      <source media="(max-width: 800px)" srcset="{{ resize_image(path=path, width=400, height=300, op="fit") }}">
-      -->
       <img alt="{{ alt }}" src='{{ resize_image(path=path, width=800, height=800, op="fit") }}' />
-    <!--</picture>-->
   </a>
 </div>
       
