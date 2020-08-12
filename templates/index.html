@@ -9,7 +9,7 @@
 {% block meta %}
 <title>{{config.title}}</title>
 {% if description %}
-  <meta name="description" content="{{ description }}"/>
+  <meta name="description" content="{{ description | safe }}"/>
 {% endif %}
 {% endblock meta %}
 {% block content %}

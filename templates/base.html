@@ -50,7 +50,7 @@
     <div id="sp-menu"class="hidden">
 
       {% if description %}
-        <p class="description">{{ description }}</p>
+        <p class="description">{{ description | safe}}</p>
       {% endif %}
       {% if config.extra.menues.author %}
         <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>
