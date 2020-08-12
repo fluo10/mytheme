@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-
+{% block meta %}
+<title>{{ page.title ~ " - " ~ config.title}}</title>
+{% if page.description %}
+  <meta name="description" content="{{ page.description | safe }}"/>
+{% endif %}
+{% endblock meta %}
 {% block content %}
 <article>
   {{ macros::page_summary(page=page, hn=1)}}

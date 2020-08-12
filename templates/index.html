@@ -1,4 +1,17 @@
 {% extends "base.html" %}
+{% if config.description %}
+  {% if config.translations[lang].description %}
+    {% set description = config.translations[lang].description | safe %}
+  {% else %}
+    {% set description = config.description | safe %}
+  {% endif %}
+{% endif %}
+{% block meta %}
+<title>{{config.title}}</title>
+{% if description %}
+  <meta name="description" content="{{ description | safe }}"/>
+{% endif %}
+{% endblock meta %}
 {% block content %}
 <h1 class="title">{{ section.title }}</h1>
 {% if section.description %}
