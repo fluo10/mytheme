@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block meta %}
+  <title>{{ "Categories" ~ " - " ~ config.title}}</title>
+  <meta name="robots" content="noindex, nofollow"/>
+{% endblock meta %}
 {% block content %}
 {% for tag in terms %}
     {{ tag.name }} {{ tag.slug }} {{ tag.pages | length }} {{ taxonomy.lang }}

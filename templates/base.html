@@ -1,14 +1,16 @@
 {% import "macros.html" as macros %}
-
 <!DOCTYPE html>
 <html lang={% if lang %}{{lang}}{% elif config.default_language %}{{config.default_language}}{% else %}"en"{% endif %}>
-
+{% if config.description %}
+  {% if config.translations[lang].description %}
+    {% set description = config.translations[lang].description | safe %}
+  {% else %}
+    {% set description = config.description | safe %}
+  {% endif %}
+{% endif %}
 <head>
-
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  
-  <title>{% block title %}{{config.title}}{%endblock title %}</title>
   <link rel="stylesheet" href="{{ get_url(path='style.css', trailing_slash=false)}}">
   <style>  
     :root{
@@ -18,7 +20,10 @@
       --header-font-family: {{macros::get_extra_configure_by_lang(key="fonts.sidebar", lang=lang) | trim | safe}};
       --title-font-family: {{macros::get_extra_configure_by_lang(key="fonts.title", lang=lang) | trim | safe}};
     }
+   
   </style>
+  {% block meta %}
+  {% endblock meta %}
   {% set additional_head_key = macros::get_extra_configure_by_lang(key="additional_head", lang=lang, only_key=true)|trim %}
   {% if config[additional_head_key] %}
     {% set additional_heads = config[additional_head_key] %}
@@ -44,12 +49,8 @@
   <nav class="sidebar">
     <div id="sp-menu"class="hidden">
 
-      {% if config.description %}
-        {% if config.translations[lang].description %}
-          <p class="description">{{ config.translations[lang].description | safe }}</p>
-        {% else %}
-          <p class="description">{{ config.description | safe }}</p>
-        {% endif %}
+      {% if description %}
+        <p class="description">{{ description }}</p>
       {% endif %}
       {% if config.extra.menues.author %}
         <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>

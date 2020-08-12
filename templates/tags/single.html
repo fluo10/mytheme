@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block meta %}
+  <title>{{ term.name ~ " - " ~ config.title}}</title>
+  <meta name="robots" content="noindex, nofollow"/>
+{% endblock meta %}
+
 {% block content %}
 {% if not paginator %}
     Tag: {{ term.name }}
