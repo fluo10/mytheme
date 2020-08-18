@@ -37,9 +37,9 @@
   {% endif %}
   <div class="page_metadata">
       <p>{{ page.description }}</p>
-      <p>{{macros::get_extra_configure_by_lang(key="translation.created", lang=page.lang) }}:<time>{{ page.date }}</time></p>
+      <p>{{macros::get_extra_configure_by_lang(key="translation.created", lang=page.lang) }}:<time>{{ page.date | date }}</time></p>
       {% if page.updated %}
-        <p>{{macros::get_extra_configure_by_lang(key="translation.updated", lang=page.lang) }}:<time>{{ page.updated }}</time></p>
+        <p>{{macros::get_extra_configure_by_lang(key="translation.updated", lang=page.lang) }}:<time>{{ page.updated | date }}</time></p>
       {% endif %}
       {% if page.taxonomies %}
       <ul class="term-links">
