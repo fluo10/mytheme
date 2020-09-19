@@ -21,7 +21,7 @@
 {% set top_section_path = macros::get_extra_configure_by_lang(key="top.main_section",lang=lang)|trim %}
 {% set top_section = get_section(path=top_section_path) %}
 {% if top_section.paginate_by %}
-  {% set pages = top_section.pages | slice(end=top_section.pagenate_by) %}
+  {% set pages = top_section.pages | slice(end=top_section.paginate_by) %}
 {% else %}
   {% set pages = top_section.pages %}
 {% endif %}
