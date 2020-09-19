@@ -88,6 +88,9 @@
       <li class="{{class}}"><a href="{{term.permalink}}"  style="{{style}}">{{ term.name }}<span class="count">&#040;{{term.pages | length}}&#041;</span></a></li>  
     {% endif %}
   {% endfor %}
+  {% if max_terms < terms_count and max_terms != 0 %}
+    <li class="{{class}}"><a href="{{get_url(path=taxonomy_name)}}">...</a></li>  
+  {% endif %}
 {% endmacro term_list_items %}
 
 

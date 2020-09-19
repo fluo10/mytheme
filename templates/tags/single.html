@@ -5,26 +5,27 @@
 {% endblock meta %}
 
 {% block content %}
-{% if not paginator %}
-    Tag: {{ term.name }}
+<h1><a href="{{get_url(path='tags')}}">tags</a>/{{ term.name }}</h1>
 
-    {% for page in term.pages %}
-        <article>
-            <h3 class="post__title"><a href="{{ page.permalink | safe }}">{{ page.title | safe }}</a></h3>
-        </article>
-    {% endfor %}
+{% if paginator %}
+  {% set pages = paginator.pages %}
 {% else %}
-    Tag: {{ term.name }}
-    {% for page in paginator.pages %}
-        {{page.title|safe}}
+  {% set pages = term.pages %}
+{% endif %}
+
+<ul class="page-links">
+    {% for page in pages %}
+        <li class="page-link"><a href="{{page.permalink}}">{{ macros::page_summary(page=page, hn=2, disable_link=true) }}</a></li>
     {% endfor %}
-    Num pagers: {{ paginator.number_pagers }}
-    Page size: {{ paginator.paginate_by }}
-    Current index: {{ paginator.current_index }}
-    First: {{ paginator.first | safe }}
-    Last: {{ paginator.last | safe }}
-    {% if paginator.previous %}has_prev{% endif%}
-    {% if paginator.next %}has_next{% endif%}
+</ul>
+{% if paginator %}
+<p class="nav-links">
+    <span><a href="{{ paginator.first}}">&lt;&lt;</a></span>
+    <span>{% if paginator.previous %}<a href="{{pagenator.previous}}">&lt;</a>{% else %}&lt;{% endif%}</span>
+    {{ paginator.current_index }} / {{ paginator.number_pagers }}
+    <span>{% if paginator.next %}<a href="{{pagenator.next}}">&gt;</a>{% else %}&gt;{% endif%}</span>
+    <span><a href="{{ paginator.last }}">&gt;&gt;</a></span>
+</p>
 {% endif %}
 
 {% endblock content %}

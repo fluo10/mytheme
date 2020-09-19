@@ -4,8 +4,10 @@
   <meta name="robots" content="noindex, nofollow"/>
 {% endblock meta %}
 {% block content %}
-{% for tag in terms %}
-    {{ tag.name }} {{ tag.slug }} {{ tag.pages | length }} {{ taxonomy.lang }}
-{% endfor %}
-
+{% if config.extra.menues.tags %}
+<h1>{{ macros::get_extra_configure_by_lang(key="menues.tags.label", lang=lang) }}</h3> 
+<ul class="tag-links">
+  {{ macros::term_list_items(taxonomy_name="tags", class="tag-link", enable_gradation=true )}}
+</ul>
+{% endif %}
 {% endblock content %}
