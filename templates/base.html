@@ -74,7 +74,11 @@
       {% if config.extra.menues.tags %}
       <h3>{{ macros::get_extra_configure_by_lang(key="menues.tags.label", lang=lang) }}</h3> 
       <ul class="tag-links">
-        {{ macros::term_list_items(taxonomy_name="tags", class="tag-link")}}
+        {% if config.extra.menues.tags.max_terms %}
+        {{ macros::term_list_items(taxonomy_name="tags", class="tag-link", enable_gradation=true, max_terms=config.extra.menues.tags.max_terms )}}
+        {% else %}
+        {{ macros::term_list_items(taxonomy_name="tags", class="tag-link", enable_gradation=true )}}
+        {% endif %}
       </ul>
       {% endif %}
     </div>

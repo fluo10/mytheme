@@ -20,10 +20,16 @@
 <h2>{{ macros::get_extra_configure_by_lang(key="top.latest", lang=lang)}}</h2>
 {% set top_section_path = macros::get_extra_configure_by_lang(key="top.main_section",lang=lang)|trim %}
 {% set top_section = get_section(path=top_section_path) %}
+{% if top_section.paginate_by %}
+  {% set pages = top_section.pages | slice(end=top_section.pagenate_by) %}
+{% else %}
+  {% set pages = top_section.pages %}
+{% endif %}
 <ul class="page-links">
-{% for page in top_section.pages %}
+{% for page in pages %}
   <li class="page-link"><a href="{{page.permalink}}">{{ macros::page_summary(page=page, hn=3, disable_link=true) }}</a></li>
 {% endfor %}
-
-
+{% if top_section.paginate_by %}
+   <p><a href="{{get_url(path=top_section.permalink)}}">read more</a></p>
+{% endif %}
 {% endblock content %}

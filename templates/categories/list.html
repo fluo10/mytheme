@@ -4,8 +4,9 @@
   <meta name="robots" content="noindex, nofollow"/>
 {% endblock meta %}
 {% block content %}
-{% for tag in terms %}
-    {{ tag.name }} {{ tag.slug }} {{ tag.pages | length }} {{ taxonomy.lang }}
-{% endfor %}
+<h1>{{ macros::get_extra_configure_by_lang(key="menues.categories.label", lang=lang) }}</h3> 
+<ul class="cat-links">
+  {{ macros::term_list_items(taxonomy_name="categories", class="cat-link")}}
+</ul>
 
 {% endblock content %}

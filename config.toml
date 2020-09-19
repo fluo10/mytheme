@@ -90,6 +90,7 @@ github = ""
 label = "Tags"
 ja.label = "タグ"
 index = 2
+max_terms = 2
 
 [extra.menues.categories]
 label = "Categories"

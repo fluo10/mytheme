@@ -62,10 +62,35 @@
   {% endif %}
 {% endmacro term_list_items_in_page %}
 
-{% macro term_list_items(taxonomy_name, class) %}
+{% macro term_list_items(taxonomy_name, class, enable_gradation=false, max_terms=0) %}
   {% set taxonomy = get_taxonomy(kind=taxonomy_name, lang=lang) %}
+  {% set terms = taxonomy.items %}
+  {% set sorted_pages = terms | map(attribute="pages") | sort() %}
+  {% set terms_count = sorted_pages | length() %}
+  {% if enable_gradation %}
+    {% set max_pages = sorted_pages |  last() | length() %}
+  {% endif %}
+  {% if max_terms < terms_count and max_terms != 0 %}
+     {% set min_pages = sorted_pages | reverse() |  nth(n=max_terms + 1) | length() + 1 %}
+  {% else %}
+     {% set min_pages = sorted_pages |  first() | length() %}
+  {% endif %}
   {% for term in taxonomy.items %}
-    <li class="{{class}}"><a href="{{term.permalink}}">{{ term.name }}<span class="count">&#040;{{term.pages | length}}&#041;</span></a></li>
+    {% set count = term.pages | length %}
+    {% if count >= min_pages %} 
+      {% if enable_gradation %}
+        {% set numerator = count - min_pages %}
+        {% set denominator = max_pages - min_pages %}
+        {% set style = ['opacity:', numerator / denominator * 0.8 + 0.2 | as_str , ';'] | join  %}
+      {% else %}
+        {% set style = "" %}
+      {% endif %}
+      <li class="{{class}}"><a href="{{term.permalink}}"  style="{{style}}">{{ term.name }}<span class="count">&#040;{{term.pages | length}}&#041;</span></a></li>  
+    {% endif %}
   {% endfor %}
+  {% if max_terms < terms_count and max_terms != 0 %}
+    <li class="{{class}}"><a href="{{get_url(path=taxonomy_name)}}">...</a></li>  
+  {% endif %}
 {% endmacro term_list_items %}
+
 
