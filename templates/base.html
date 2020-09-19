@@ -39,12 +39,12 @@
     <h2 class="site-title"><a href={{macros::get_top_url(lang=lang)}}>{{config.title}}</a></h2>
   </header>
   {% endblock header %}
-
-  <main class="content">
-  {% block content %} 
-    
-  {% endblock content%}
-  </main>
+  <div id="maincol">
+    <main class="content">
+      {% block content %} 
+      {% endblock content%}  
+    </main>
+  </div>
   {% block nav %}
   <nav class="sidebar">
     <div id="sp-menu"class="hidden">

@@ -2,15 +2,16 @@
 html {
   font-size: 16px;
 }
-main {
-  grid-column: 2 / 3;
-  grid-row: 1 / 4;
-}
+
 .site {
   min-height: 100vh;
   display: grid;
   grid-template-columns: $sidebarWidthMax 1fr;
   grid-template-rows: auto 1fr auto;
+  #maincol {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+  }
   header.sidebar{
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -28,9 +29,12 @@ main {
   text-align: right;
   min-width: $sidebarWidthMin;
   max-width: $sidebarWidthMax;
+  padding: 1em;
+}
+#maincol {
+  padding: 2em;
 }
 main {
-  margin:1em;
   max-width: $mainWidthMax;
   min-width: $mainWidthMin;
 }
