@@ -3,9 +3,9 @@
 <html lang={% if lang %}{{lang}}{% elif config.default_language %}{{config.default_language}}{% else %}"en"{% endif %}>
 {% if config.description %}
   {% if config.translations[lang].description %}
-    {% set description = config.translations[lang].description | safe %}
+    {% set description = config.translations[lang].description %}
   {% else %}
-    {% set description = config.description | safe %}
+    {% set description = config.description %}
   {% endif %}
 {% endif %}
 <head>
@@ -50,7 +50,7 @@
     <div id="sp-menu"class="hidden">
 
       {% if description %}
-        <p class="description">{{ description }}</p>
+        <p class="description">{{ description | safe}}</p>
       {% endif %}
       {% if config.extra.menues.author %}
         <h3>{{ macros::get_extra_configure_by_lang(key="menues.author.label", lang=lang) }}</h3>
