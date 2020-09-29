@@ -11,7 +11,7 @@ html {
   #maincol {
     grid-column: 2 / 3;
     grid-row: 1 / 4;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   header.sidebar{
     grid-column: 1 / 2;
@@ -20,7 +20,7 @@ html {
   nav.sidebar {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   footer.sidebar {
     grid-column: 1 / 2;
