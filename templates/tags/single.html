@@ -21,9 +21,9 @@
 {% if paginator %}
 <p class="nav-links">
     <span><a href="{{ paginator.first}}">&lt;&lt;</a></span>
-    <span>{% if paginator.previous %}<a href="{{pagenator.previous}}">&lt;</a>{% else %}&lt;{% endif%}</span>
+    <span>{% if paginator.previous %}<a href="{{paginator.previous}}">&lt;</a>{% else %}&lt;{% endif%}</span>
     {{ paginator.current_index }} / {{ paginator.number_pagers }}
-    <span>{% if paginator.next %}<a href="{{pagenator.next}}">&gt;</a>{% else %}&gt;{% endif%}</span>
+    <span>{% if paginator.next %}<a href="{{paginator.next}}">&gt;</a>{% else %}&gt;{% endif%}</span>
     <span><a href="{{ paginator.last }}">&gt;&gt;</a></span>
 </p>
 {% endif %}
