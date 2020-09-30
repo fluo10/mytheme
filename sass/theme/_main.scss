@@ -12,7 +12,8 @@ main{
         color: var(--font-color);
     }
     a:hover, a:focus{
-        color: var(--hover-color);
+        color: var(--background-color);
+        background-color: var(--color);
     }
     .nav-links, .lang-links{
         text-align: center;
