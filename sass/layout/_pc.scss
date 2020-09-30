@@ -32,6 +32,7 @@ html {
   min-width: $sidebarWidthMin;
   max-width: $sidebarWidthMax;
   padding: 1em;
+  box-sizing: border-box;
 }
 #maincol {
   padding: 2em;
