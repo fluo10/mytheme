@@ -11,7 +11,8 @@
       color: var(--header-color);
   }
   a:hover, a:focus {
-    color: var(--header-hover-color);
+    color: var(--header-background-color);
+    background-color: var(--header-color);
   }
   p {
     margin: 0.5em 0;
