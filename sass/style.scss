@@ -40,12 +40,6 @@ body{
   background-color: var(--background-color);
   
   margin: 0;
-  a {
-    color: var(--font-color);
-  }
-  a:hover, a:focus{
-    color: var(--hover-color);
-  }
 }
 main{
   .nav-links, .lang-links{
@@ -80,9 +74,6 @@ footer {
 .tag-links, .cat-links, .nav-links, .lang-links, .term-links, .page-links, .sns-links{
   list-style: none;
   padding-left: 0;
-  a {
-    text-decoration: none;
-  }
 }
 .tag-link, .cat-link, .nav-link, .lang-link {
   display: inline-block;
@@ -95,10 +86,6 @@ footer {
     margin: 0.1em;
     border-radius: 0.2em;
   }
-  a:hover, a:focus{
-    opacity: 0.7;
-  }
-
 }
 .page-links{
   padding-left: 1em;

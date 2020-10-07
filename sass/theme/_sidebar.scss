@@ -13,6 +13,7 @@
   a:hover, a:focus {
     color: var(--header-background-color);
     background-color: var(--header-color);
+    opacity: 1 !important;
   }
   p {
     margin: 0.5em 0;
@@ -22,26 +23,12 @@
     font-size: 2em;
     font-weight: bold;
     margin: 0;
-    a, a:hover, a:focus{
+/*    a, a:hover, a:focus{
       color: inherit;
       text-decoration: inherit;
-    }
+    }*/
   }
-  .cat-links{
-    .count{
-      display: none;
-    }
-    li{
-      display: block;
-    }
-  }
-  .footer-links{
-    padding: 0;
-    list-style: none;
-    li{
-      display:inline-block;
-    }
-    font-size: 0.8em;
-  }
+
+
 }
 
