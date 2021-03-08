@@ -1,0 +1,24 @@
+#maincol {
+    blockquote {
+        border-left: solid 1em currentColor;
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+    .footnote-definition{
+        margin: 2em 0;
+        padding:  0 2em;
+        font-size: 0.8em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        .footnote-definition-label{
+            width : 3em;
+        }
+        p{
+            width: calc(100% - 3em);
+        }
+
+    }
+}
