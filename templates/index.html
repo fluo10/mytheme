@@ -17,19 +17,18 @@
 {% if section.description %}
  <p> {{ section.description }}</p>
 {% endif %}
-<h2>{{ macros::get_extra_configure_by_lang(key="top.latest", lang=lang)}}</h2>
-{% set top_section_path = macros::get_extra_configure_by_lang(key="top.main_section",lang=lang)|trim %}
-{% set top_section = get_section(path=top_section_path) %}
-{% if top_section.paginate_by %}
-  {% set pages = top_section.pages | slice(end=top_section.paginate_by) %}
-{% else %}
-  {% set pages = top_section.pages %}
-{% endif %}
+{% set top_sections_key = macros::get_extra_configure_by_lang(key="top.sections",lang=lang, only_key=true) | trim %}
+{% set top_sections = config[top_sections_key] %}
+{% for top_section in top_sections %}
+<h2>{{ top_section.label| trim }}</h2>
+{% set current_section = get_section(path=top_section.path) %}
+{% set pages = current_section.pages %}
 <ul class="page-links">
-{% for page in pages %}
-  <li class="page-link"><a href="{{page.permalink}}">{{ macros::page_summary(page=page, hn=3, disable_link=true) }}</a></li>
+{% for current_page in pages | slice(end=top_section.paginate_by) %}
+  <li class="page-link"><a href="{{current_page.permalink}}">{{ macros::page_summary(page=current_page, hn=3, disable_link=true) }}</a></li>
 {% endfor %}
-{% if top_section.paginate_by %}
-   <p><a href="{{get_url(path=top_section.permalink)}}">read more</a></p>
+{% if pages | length > top_section.paginate_by  %}
+   <p><a href="{{get_url(path=current_section.permalink)}}">read more</a></p>
 {% endif %}
+{% endfor %}
 {% endblock content %}

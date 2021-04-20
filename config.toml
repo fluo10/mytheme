@@ -34,13 +34,18 @@ additional_head = [
 ]
 
 [extra.top]
-main_section = "blog/_index.md"
-latest = "Latest posts"
+# Sections to show on Top page
+sections = [
+  {label = "Latest posts", path = "blog/_index.md", paginate_by = 10},
+]
+
 categories = "categories"
 tags = "tags"
+
 [extra.top.ja]
-main_section = "blog/_index.ja.md"
-latest = "最近の投稿"
+sections = [
+{label = "最近の投稿", path = "blog/_index.ja.md", paginate_by = 10},
+]
 
 [extra.translation]
 created = "Created at"
