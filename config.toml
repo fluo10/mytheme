@@ -4,7 +4,7 @@ base_url = "https://example.com"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-title = "Ash"
+title = "My theme"
 discription = "Multilanguage theme"
 
 # Whether to do syntax highlighting
@@ -104,8 +104,4 @@ index = 3
 
 [extra.footer]
 links = [{name = "Japanese", url = "@/_index.ja.md"}]
-<<<<<<< HEAD
 ja.links = [{name = "英語" , url = "@/_index.md"}]
-=======
-ja.links = [{name = "英語" , url = "@/_index.md"}]
->>>>>>> aedfdbf (Rename directory of my theme)

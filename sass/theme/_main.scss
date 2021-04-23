@@ -9,10 +9,11 @@ main{
         max-width: 100%;
     }
     a {
-        color: var(--font-color);
+        color: var(--color);
     }
     a:hover, a:focus{
-        color: var(--hover-color);
+        color: var(--background-color);
+        background-color: var(--color);
     }
     .nav-links, .lang-links{
         text-align: center;

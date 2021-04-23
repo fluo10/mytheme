@@ -14,6 +14,7 @@ $mainWidthMax: 800px;
 :root{
     min-height: 100vh;
 }
+@import "sidebar";
 nav.sidebar {
     margin: 0;
     padding-top: 1em;
