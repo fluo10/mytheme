@@ -28,7 +28,7 @@
   <li class="page-link"><a href="{{current_page.permalink}}">{{ macros::page_summary(page=current_page, hn=3, disable_link=true) }}</a></li>
 {% endfor %}
 {% if pages | length > top_section.paginate_by  %}
-   <p><a href="{{get_url(path=current_section.permalink)}}">read more</a></p>
+   <p><a href="{{path=current_section.permalink}}">read more</a></p>
 {% endif %}
 {% endfor %}
 {% endblock content %}
