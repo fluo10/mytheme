@@ -2,8 +2,8 @@
 $breakpoint: 938px;
 $sidebarWidthMin: 275px;
 $sidebarWidthMax: 423px;
-$mainWidthMin: 552px;
-$mainWidthMax: 800px;
+$mainWidthMin: 24rem;
+$mainWidthMax: 40rem;
 
 @media (min-width: $breakpoint) {
     @import "pc";
