@@ -21,14 +21,6 @@
     {% endif %}
 {% endmacro get_extra_configure_by_lang %}
 
-{% macro get_top_url(lang) %}
-  {% if lang == config.default_language %}
-    {{get_url(path="")}}
-  {% else %}
-    {{get_url(path="") ~ '/' ~ lang}}
-  {% endif %}
-{% endmacro get_top_url %}
-
 {% macro page_summary(page, hn, disable_link=false) %}
   {% if disable_link %}
     <h{{hn}}>{{ page.title }}</h{{hn}}>

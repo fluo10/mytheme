@@ -36,7 +36,7 @@
 <div class="site">
     {% block header %}
   <header class="sidebar">
-    <h2 class="site-title"><a href={{macros::get_top_url(lang=lang)}}>{{config.title}}</a></h2>
+    <h2 class="site-title"><a href={{get_url(path="@/_index.md", lang=lang)}}>{{config.title}}</a></h2>
   </header>
   {% endblock header %}
   <div id="maincol">

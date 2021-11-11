@@ -23,5 +23,7 @@ main{
     }
     pre{
         overflow: auto;
+        background-color: hsl(var(--base-hue), var(--pale-saturation), 10%);
+        color: hsl(var(--base-hue), var(--pale-saturation), 70%);    
     }
 }
